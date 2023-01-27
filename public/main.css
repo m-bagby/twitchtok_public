@@ -1,0 +1,373 @@
+:root, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100px;
+  min-height: 100%;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Montserrat", sans-serif;
+  color: #404040;
+}
+
+
+#root {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
+  z-index: 100;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
+  box-sizing: border-box;
+
+  position: sticky;
+  top: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
+/*Loading*/
+.appLoading {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.appLoading img {
+  position: absolute;
+}
+
+.appLoading img.loadingIcon {
+  width: 350px;
+}
+
+.appLoading img.twitchTokIcon {
+  width: 200px;
+  margin-bottom: -40px;
+}
+
+@media (max-width: 1000px) {
+  .appLoading img.loadingIcon {
+    width: 225px;
+  }
+
+  .appLoading img.twitchTokIcon {
+    width: 125px;
+    margin-bottom: -20px;
+  }
+}
+
+.loadingContainer {
+  height: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.loadingIcon {
+  width: 1.5rem;
+  animation: loadingAnimation;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  transition-timing-function: ease;
+}
+
+@keyframes loadingAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.searchResultsList {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  align-items: center;
+
+  padding: 0 20px;
+  gap: 3rem;
+}
+
+.searchResultsList li {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.searchResultsList img {
+  width: 100%;
+}
+
+.searchResults h2 {
+  text-align: center;
+}
+
+/*Result Cards*/
+.resultCard {
+  width: 100%;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  box-shadow: 0px 1px 5px rgb(50 50 50 / 7%);
+  clip-path: inset(0px 0px -10px 0px);
+}
+
+/*Streamer Result Card*/
+
+.resultCard.streamer img {
+  width: 4rem;
+  border-radius: 50%;
+}
+
+/*Category Result Card*/
+.resultCard.category img {
+  width: 12.5rem;
+}
+
+.container {
+  width: 60vw;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+#headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  max-width: 1150px;
+}
+
+#logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  #logoContainer .siteTitle {
+    display: none;
+  }
+}
+
+#logo {
+  height: 2rem;
+  margin-right: 10px;
+}
+
+#searchBar {
+  display: flex;
+  flex-direction: row;
+  padding: 12px 16px;
+  background: #f1f1f2;
+  border-radius: 92px;
+}
+
+#searchBar select {
+  color: #7c7c7c;
+}
+
+#searchBar button img {
+  width: 1.25rem;
+}
+
+#searchBar select {
+  margin: 0 3px;
+}
+
+#searchBar span {
+  color: #cccccc;
+}
+
+#searchBar input, #searchBar input:focus, #searchBar button, #searchBar select, #searchBar select:focus {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+#searchBar input {
+  width: 50ch;
+}
+
+@media (max-width: 1000px) {
+  #searchBar input {
+    width: 25ch;
+  }
+}
+
+@media (max-width: 425px) {
+  #searchBar input {
+    width: 15ch;
+  }
+}
+
+
+.clip {
+  box-sizing: border-box;
+  padding: 2rem 5px;
+  box-shadow: 0 1px 5px rgb(50 50 50 / 7%);
+  clip-path: inset(0px 0px -10px 0px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clip .clipVideo {
+  display: none;
+}
+
+.clip.playingVideo .thumbnailContainer {
+  display: none;
+}
+
+.clip.playingVideo .clipVideo {
+  display: block;
+}
+
+.inlineHeaders h3, .inlineHeaders h4 {
+  display: inline-block;
+}
+
+.clipHeader h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.clipHeader a {
+  color: black;
+}
+
+.clipHeader a:hover {
+  text-decoration: underline;
+  font-weight: inherit;
+}
+
+.clipTop h3 {
+  font-weight: lighter;
+}
+
+.clipHeader h2 {
+  font-weight: bolder;
+}
+
+.clipHeader h3 {
+  font-weight: normal;
+}
+
+.clipHeader h4, .clipHeader h5 {
+  font-weight: lighter;
+}
+
+.clipHeader {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding-bottom: .75rem;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.clipHeader h2, .clipHeader h3, .clipHeader h4, .clipHeader h5 {
+  margin: 0;
+}
+
+.iframeContainer {
+  margin: 1rem 0;
+  border-radius: 25px;
+  background-color: #000;
+}
+
+@media (min-width: 1000px) {
+  .iframeContainer {
+    height: 40vh;
+    width: 71.2vh;
+  }
+
+  .clip {
+    min-width: 71.2vh;
+  }
+}
+
+@media (max-width: 1000px) {
+  .iframeContainer {
+    width: 90vw;
+    height: 50.625vw;
+  }
+}
+
+.thumbnailContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.clipThumbnail {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.clipVideo {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.clipsList {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  /*gap: 2rem;*/
+}
