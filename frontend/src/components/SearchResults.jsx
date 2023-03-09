@@ -20,9 +20,10 @@ const SearchResults = () => {
   const searchType = query.get("type");
   const searchText = query.get("value");
 
+  //Execute the search
   useEffect(() => {
     getResults();
-  }, [])
+  }, []);
 
   //Get results for Twitch query
   const getResults = () => {
@@ -30,7 +31,7 @@ const SearchResults = () => {
       setResults(searchResults.data);
       setFetchingResults(false);
     });
-  }
+  };
 
   return (
     <div className={"container"}>
@@ -65,8 +66,8 @@ const SearchResults = () => {
       }
 
     </div>
-  )
-}
+  );
+};
 
 
 export default SearchResults;

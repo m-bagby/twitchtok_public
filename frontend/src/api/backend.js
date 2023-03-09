@@ -11,12 +11,13 @@ export const getAccessToken = async () => {
         response.json().then(json => {
           resolve(json.token);
         });
-      } else {
-        alert("Sorry! The service is down right now. Please try again later.")
+      }
+      else {
+        alert("Oops! Something went wrong");
       }
     });
   });
-}
+};
 
 
 //Get a collection clip IDs for the frontpage from the backend
@@ -38,9 +39,10 @@ export const getFrontpageClipIDs = async () => {
 
           resolve(clipIDs);
         });
-      } else {
-        alert("Sorry! The service is down right now. Please try again later.")
+      }
+      else {
+        alert("Oops! Something went wrong");
       }
     });
   });
-}
+};

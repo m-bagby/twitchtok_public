@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const SearchResultCard = ({result, resultType}) => {
   const id = result.id;
   let name;
@@ -8,7 +9,8 @@ const SearchResultCard = ({result, resultType}) => {
   if (resultType === "streamer") {
     name = result.display_name;
     image = result.thumbnail_url;
-  } else {
+  }
+  else {
     name = result.name;
     image = result.box_art_url;
   }
@@ -22,8 +24,8 @@ const SearchResultCard = ({result, resultType}) => {
         <h3>{name}</h3>
       </a>
     </div>
-  )
-}
+  );
+};
 
 
 export default SearchResultCard;

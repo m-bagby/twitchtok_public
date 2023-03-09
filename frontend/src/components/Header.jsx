@@ -10,19 +10,26 @@ const Header = () => {
     const newSearchText = event.target.value;
 
     setSearchText(newSearchText);
-  }
+  };
 
   //Update search type state to reflect changes to input
   const updateSearchType = (event) => {
     const newSearchType = event.target.value;
 
     setSearchType(newSearchType);
-  }
+  };
+
+  //If enter is pressed in the text input, execute search
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   //Go to search results page
   const handleSearch = () => {
     window.location = "search?type=" + searchType + "&value=" + searchText;
-  }
+  };
 
   return (
     <header>
@@ -37,7 +44,8 @@ const Header = () => {
 
 
         <div id={"searchBar"}>
-          <input name={"searchText"} type={"text"} placeholder={"Search"} onChange={updateSearchText}/>
+          <input name={"searchText"} type={"text"} placeholder={"Search"} onChange={updateSearchText}
+            onKeyPress={handleKeyPress}/>
 
           <span>|</span>
 
@@ -56,8 +64,8 @@ const Header = () => {
         <div></div>
       </div>
     </header>
-  )
-}
+  );
+};
 
 const clientId = null;
 const accessToken = null;

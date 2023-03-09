@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo, useRef, useContext} from "react";
-import {useLocation} from 'react-router-dom';
+import {useLocation} from "react-router-dom";
 
 import AccessTokenContext from "../AccessTokenContext";
 import {getClips, getHomepageClips} from "../api/twitchUtils";
@@ -9,7 +9,7 @@ import Clip from "./Clip.jsx";
 const ClipsBrowser = () => {
   const {accessToken} = useContext(AccessTokenContext);
   //Check if page url has /category or /streamer.. use their id to make streamer or category query if so
-  //Otherwise, do random query one
+  //Otherwise, do random query
   const [queryCursor, setQueryCursor] = useState("");
 
   const [clips, setClips] = useState([]);
@@ -40,7 +40,7 @@ const ClipsBrowser = () => {
     else {
       response = await getHomepageClips(accessToken);
       //no pagination for homepage, but a filler is used because cursor null suggests end of clips
-      response.pagination = {cursor: "filler"}
+      response.pagination = {cursor: "filler"};
     }
 
     //Initialize empty video URLs for each new clip
@@ -57,7 +57,7 @@ const ClipsBrowser = () => {
     //Update the clips, video urls, and cursor
     setQueryCursor(newCursor);
     setClips(newClipsState);
-  }
+  };
 
 
   //Initial load clips
@@ -93,7 +93,7 @@ const ClipsBrowser = () => {
     let videoUrl = thumbnailUrl.substring(0, thumbnailUrl.indexOf("-preview"));
     videoUrl += ".mp4";
     return videoUrl;
-  }
+  };
 
 
   //scrolling plays or pauses clips and load more clips
@@ -115,7 +115,7 @@ const ClipsBrowser = () => {
         });
       }
     }
-  }
+  };
 
 
   const playPauseClip = () => {
@@ -134,7 +134,8 @@ const ClipsBrowser = () => {
         if (!clipPlayers[i].paused) {
           try {
             clipPlayers[i].pause();
-          } catch (e) {
+          }
+          catch (e) {
           }
         }
       }
@@ -152,7 +153,8 @@ const ClipsBrowser = () => {
     let centeredPlaying;
     try {
       centeredPlaying = !clipPlayers[centeredClipIndex].paused;
-    } catch (err) {
+    }
+    catch (err) {
       centeredPlaying = false;
     }
 
@@ -174,7 +176,7 @@ const ClipsBrowser = () => {
     }
 
     queuedPlay.current = null;
-  }
+  };
 
 
   return (
@@ -209,7 +211,7 @@ const ClipsBrowser = () => {
         </div>
       }
     </div>
-  )
-}
+  );
+};
 
 export default ClipsBrowser;

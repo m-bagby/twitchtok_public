@@ -3,7 +3,7 @@ import React from "react";
 const Clip = ({clip}) => {
   //Create formatted date
   let date = new Date(Date.parse(clip.created_at));
-  const options = {year: 'numeric', month: 'long', day: 'numeric'};
+  const options = {year: "numeric", month: "long", day: "numeric"};
   date = (date.toLocaleString("en-US", options));
 
   //Format the view count
@@ -17,7 +17,7 @@ const Clip = ({clip}) => {
     if (event.target.volume !== JSON.parse(sessionStorage.getItem("volume"))) {
       sessionStorage.setItem("volume", JSON.stringify(event.target.volume));
     }
-  }
+  };
 
   return (
     <div className={"clip container"}>
@@ -26,7 +26,7 @@ const Clip = ({clip}) => {
 
         <span className={"inlineHeaders"}>
           <h3><b><a title={"Browse Streamer Clips"}
-                    href={"view?type=streamer&id=" + clip.broadcaster_id}>{clip.broadcaster_name}</a></b></h3>
+            href={"view?type=streamer&id=" + clip.broadcaster_id}>{clip.broadcaster_name}</a></b></h3>
         <span>&nbsp;-&nbsp;</span>
         <h4><b><a title={"Browse Category Clips"} href={"view?type=category&id=" + clip.game_id}>{clip.gameName}</a></b></h4>
         </span>
@@ -41,10 +41,10 @@ const Clip = ({clip}) => {
           </div>
         }
         <video className={"clipVideo"} type={"video/mp4"} autoPlay={true}
-               controls={true} loop={true} onVolumeChange={handleVolumeChange}/>
+          controls={true} loop={true} onVolumeChange={handleVolumeChange}/>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Clip;

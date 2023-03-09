@@ -1,0 +1,24 @@
+service: twitchtok-backend
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /accessToken
+          method: ANY
+          cors:
+            origins: "https://www.twitchtok.markbagby.net"
+      - http:
+          path: /frontpage
+          method: ANY
+          cors:
+            origins: "https://www.twitchtok.markbagby.net"

@@ -38,21 +38,23 @@ export const getHomepageClips = async (accessToken) => {
 
           resolve(json);
         });
-      } else {
+      }
+      else {
         console.log("error fetching frontpage clips from Twitch");
       }
-    })
+    });
   });
-}
+};
 
 
 //Get streamer clips
 //Get game clips
 export async function getClips(accessToken, searchType, id, queryCursor = "") {
-  let query = "?"
+  let query = "?";
   if (searchType === "category") {
     query += "game_id=" + id;
-  } else if (searchType === "streamer") {
+  }
+  else if (searchType === "streamer") {
     query += "broadcaster_id=" + id;
   }
 
@@ -84,7 +86,8 @@ export async function getClips(accessToken, searchType, id, queryCursor = "") {
 
               resolve(json);
             });
-        } else {
+        }
+        else {
           console.log("error");
         }
       });
@@ -101,7 +104,8 @@ const addGameTitles = async (accessToken, clips) => {
     for (let i in clips) {
       if (gameTitles.has(clips[i].game_id)) {
         clips[i].gameName = gameTitles.get(clips[i].game_id);
-      } else {
+      }
+      else {
         unmappedGameIds.push(clips[i].game_id);
       }
     }
@@ -111,7 +115,7 @@ const addGameTitles = async (accessToken, clips) => {
       await getGameNames(accessToken, unmappedGameIds).then((games) => {
         for (let game of games) {
           if (!gameTitles.has(game.id)) {
-            gameTitles.set(game.id, game.name)
+            gameTitles.set(game.id, game.name);
           }
         }
       });
@@ -126,7 +130,7 @@ const addGameTitles = async (accessToken, clips) => {
 
     resolve(clips);
   });
-}
+};
 
 
 //get game names
@@ -160,7 +164,8 @@ export async function getGameNames(accessToken, ids) {
             .then(json => {
               resolve(json.data);
             });
-        } else {
+        }
+        else {
           console.log("error");
         }
       });
@@ -174,8 +179,9 @@ export const searchTwitch = async (accessToken, searchType, searchText) => {
     //channels categories
     if (searchType === "streamer") {
       searchType = "channels";
-    } else {
-      searchType = "categories"
+    }
+    else {
+      searchType = "categories";
     }
 
     const getUrl = "https://api.twitch.tv/helix/search/" + searchType + "?query=" + searchText;
@@ -192,10 +198,11 @@ export const searchTwitch = async (accessToken, searchType, searchText) => {
         response.json().then(body => {
           resolve(body);
         });
-      } else {
+      }
+      else {
         console.log("Error searching Twitch");
         console.log(response);
       }
-    })
+    });
   });
-}
+};

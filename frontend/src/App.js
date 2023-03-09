@@ -13,11 +13,14 @@ function App() {
   const [loading, setLoading] = useState(false);
 
 
+  //Initialize access token
   useEffect(() => {
-    //initialize access token
+    //Use access token in session storage
     if (sessionStorage.getItem("accessToken") !== null) {
       setAccessToken(JSON.parse(sessionStorage.getItem("accessToken")));
-    } else {
+    }
+    //Get access token from backend
+    else {
       setLoading(true);
 
       getAccessToken().then(newToken => {
