@@ -16,9 +16,9 @@ functions:
           path: /accessToken
           method: ANY
           cors:
-            origins: "https://www.twitchtok.markbagby.net"
+            origins: "https://www.twitchtok.markbagby.io"
       - http:
           path: /frontpage
           method: ANY
           cors:
-            origins: "https://www.twitchtok.markbagby.net"
+            origins: "https://www.twitchtok.markbagby.io"

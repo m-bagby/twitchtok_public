@@ -6,7 +6,7 @@ const makeApp = (makeRoutesFunctions) => {
 
   //Set response headers
   app.use((req, res, next) => {
-    res.append("Access-Control-Allow-Origin", "https://www.twitchtok.markbagby.net");
+    res.append("Access-Control-Allow-Origin", "https://www.twitchtok.markbagby.io");
     res.append("Access-Control-Allow-Methods", "*");
     res.append("Access-Control-Allow-Headers", "*");
     next();
